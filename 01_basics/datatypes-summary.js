@@ -54,3 +54,27 @@ console.log(typeof outsideTemp) // data type of null returns object
 console.log(typeof myFunction)
 
 // Link to study : https://262.ecma-international.org/5.1/#sec-11.4.3
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Stack (Primitive) , Heap (Non-Primitive)
+
+
+let myYoutubename = "mrbeast"
+
+let anotherName = myYoutubename
+anotherName = "beastdotcom" 
+
+console.log(myYoutubename)
+console.log(anotherName)
+
+let userOne = {
+    email : "usergoogle.com",
+    address : "Dharan"
+};
+let userTwo = userOne;
+userTwo.email = "beastgoogle.com"
+
+console.log(userOne.email)
+console.log(userTwo.email)
