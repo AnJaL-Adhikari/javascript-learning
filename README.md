@@ -1,2 +1,3 @@
 # JS-mastery
-JAVASCRIPT - Back to basics and will come back mastering it ! 
+
+Learning JavaScript concepts and practicing code examples step by step.
