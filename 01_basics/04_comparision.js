@@ -16,6 +16,6 @@ console.log(undefined > 0);
 console.log(undefined < 0);
 
 // ===
-console.log("2" == 2) //true == conversion exist 
-console.log("2" === 2) //false === checks both value and datatype
+console.log("2" == 2) //true, == conversion exist 
+console.log("2" === 2) //false, === checks both value and datatype
 
