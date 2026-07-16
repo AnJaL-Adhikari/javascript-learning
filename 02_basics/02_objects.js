@@ -101,4 +101,39 @@ console.log(tinderUser)
   console.log(Object.entries(tinderUser)) // Get an array of key-value pairs from the object
 
   console.log(tinderUser.hasOwnProperty('isLoggedIn'))   // Check whether the object contains the specified property
+
+
+  const course = {
+    coursename : "javascript",
+    price : "999",
+    courseInstructor : "hitesh"
+}
+// Access and display the course name using dot notation
+console.log(course.coursename)
+console.log(course.price)
+console.log(course.courseInstructor)
+
+// Destructure object properties and rename selected variables
+const {coursename : course , price , courseInstructor : instructor} = course 
+
+
+// Display the destructured course name, price and instructor variables
+console.log(course)
+console.log(price)
+console.log(instructor)
+
+
+//A valid JSON object
+// {
+//   "name": "Samay Raina",
+//   "coursename": "latent",
+//   "price": "free",
+//   "platform": "youtube & netflix"
+// }
+
+[
+    {},
+    {},
+    {}
+]
   
