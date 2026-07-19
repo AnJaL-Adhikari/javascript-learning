@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+
+    <style>
+        body {
+            background-color: #212121;
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Initial unordered list containing one language -->
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+
+</body>
+
+<script>
+
+    /*
+        Function to add a new language to the list.
+
+        Steps:
+        1. Create a new <li> element.
+        2. Add text content using innerHTML.
+        3. Append the new <li> to the existing ul element.
+    */
+    function addLanguage(langName) {
+
+        // Create a new list item element in memory
+        const li = document.createElement('li');
+
+        // Add language name inside the li element
+        li.innerHTML = `${langName}`;
+
+        // Select the ul with class "language" and add the new li
+        document.querySelector('.language').appendChild(li);
+    }
+
+
+    // Add new languages using the function
+    addLanguage('Typescript');
+    addLanguage('C++');
+    addLanguage('Python');
+
+
+    /*
+        Optimized way to add a language.
+
+        Instead of using innerHTML, this uses:
+        createTextNode() -> creates a text node
+        appendChild()    -> attaches it to the li
+
+        This is safer when inserting plain text because
+        it avoids unnecessary HTML parsing.
+    */
+    function addOptiLangauge(langName) {
+
+        // Create a new li element
+        const li = document.createElement('li');
+
+        // Create a text node and add it inside li
+        li.appendChild(document.createTextNode(langName));
+
+        // Add the li element to the language list
+        document.querySelector('.language').appendChild(li);
+    }
+
+
+    // Add Go language using optimized method
+    addOptiLangauge('golang');
+
+
+
+    // =========================
+    // Edit DOM Elements
+    // =========================
+
+
+    // Select the second <li> element from the list
+    const secondLang = document.querySelector("li:nth-child(2)");
+
+    /*
+        Another way to update content:
+        secondLang.innerHTML = "Mojo";
+
+        But replacing the whole element is sometimes preferred
+        when you want to change the complete structure.
+    */
+
+
+    // Create a new li element
+    const newli = document.createElement('li');
+
+    // Add new text inside the li
+    newli.textContent = "Mojo";
+
+    // Replace the second language element with the new li
+    secondLang.replaceWith(newli);
+
+
+
+    // Select the first language element
+    const firstLang = document.querySelector("li:nth-child(1)");
+
+    /*
+        outerHTML replaces the complete element,
+        including the selected tag itself.
+
+        Before:
+        <li>Javascript</li>
+
+        After:
+        <li>TypeScript</li>
+    */
+    firstLang.outerHTML = '<li>TypeScript</li>';
+
+
+
+    // =========================
+    // Remove DOM Elements
+    // =========================
+
+
+    // Select the last language item
+    const lastLang = document.querySelector('li:last-child');
+
+    // Remove the selected element from the DOM
+    lastLang.remove();
+
+
+</script>
+
+</html>
