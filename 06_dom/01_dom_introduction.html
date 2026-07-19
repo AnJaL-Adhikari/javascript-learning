@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning </title>
+
+    <style>
+        .bg-black {
+            background-color: #212121;
+            color: #f1f1f1;
+        }
+
+        .heading {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+
+    <!-- ==========================================================
+         1. DOM SELECTORS & ATTRIBUTES
+         ==========================================================
+
+         getAttribute(attributeName)
+         ---------------------------
+         -> Used to retrieve the value of an attribute.
+
+         Example:
+            const title = document.getElementById("title");
+            title.getAttribute("id");      // "title"
+            title.getAttribute("class");   // "heading"
+
+         setAttribute(attribute, value)
+         -------------------------------
+         -> Used to create or overwrite an attribute.
+
+         Example:
+            title.setAttribute("class", "heading test");
+
+         NOTE:
+         setAttribute() replaces the previous value.
+         If the old class was "heading" and you use
+         setAttribute("class", "newClass"),
+         the old class is removed.
+
+    -->
+
+    <div class="bg-black">
+
+        <h1 id="title" class="heading">
+            DOM Learning on Chai aur Code
+        </h1>
+
+        <h2>Lorem ipsum dolor sit amet.</h2>
+        <h2>Second Heading</h2>
+        <h2>Third Heading</h2>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+
+    </div>
+
+    <!-- ==========================================================
+         2. DOM TRAVERSING (Parent, Child & Siblings)
+         ==========================================================
+
+         Parent Element
+         --------------
+         element.parentElement
+
+         Example:
+            const ul = document.querySelector("ul");
+            ul.parentElement;
+
+         Child Elements
+         --------------
+         element.children
+
+         Returns HTMLCollection
+
+         Example:
+            ul.children
+            ul.children[0]
+            ul.children[1]
+
+         First Child
+         -----------
+            element.firstElementChild
+
+         Last Child
+         ----------
+            element.lastElementChild
+
+         Siblings
+         --------
+            element.nextElementSibling
+            element.previousElementSibling
+
+         Example:
+            const firstLi = document.querySelector("li");
+            firstLi.nextElementSibling;
+
+    -->
+
+    <!-- ==========================================================
+         3. childNodes
+         ==========================================================
+
+         childNodes returns ALL nodes.
+
+         Includes:
+             Elements
+             Text Nodes (spaces/new lines)
+             Comments
+
+         Example:
+
+            ul.childNodes
+
+         Difference
+
+         children
+            -> Only HTML elements
+
+         childNodes
+            -> Elements + Text + Comments
+
+         NOTE:
+         Frameworks like React internally work with nodes,
+         making childNodes an important concept.
+
+    -->
+
+    <!-- ==========================================================
+         4. Creating Elements Dynamically
+         ==========================================================
+
+         Step 1
+         ------
+         Create element
+
+            const div = document.createElement("div");
+
+         Step 2
+         ------
+         Add properties
+
+            div.className = "main";
+            div.id = "myDiv";
+
+         OR
+
+            div.setAttribute("id", "myDiv");
+
+         Step 3
+         ------
+         Add styles
+
+            div.style.backgroundColor = "green";
+            div.style.padding = "15px";
+
+         Step 4
+         ------
+         Add text
+
+            div.innerText = "Hello World";
+
+         Better approach
+
+            const text = document.createTextNode("Hello World");
+            div.appendChild(text);
+
+         Why?
+
+         createTextNode() is considered more efficient because
+         it directly creates a text node instead of replacing
+         existing content.
+
+    -->
+
+    <!-- ==========================================================
+         5. appendChild()
+         ==========================================================
+
+         Important Concept
+
+         document.createElement()
+
+         only creates the element in MEMORY.
+
+         It DOES NOT appear on the webpage.
+
+         To display it:
+
+            document.body.appendChild(div);
+
+         OR
+
+            parent.appendChild(div);
+
+         Flow
+
+         Create Element
+               ↓
+         Add ID/Class
+               ↓
+         Add Style
+               ↓
+         Add Text
+               ↓
+         appendChild()
+               ↓
+         Visible on Page
+
+
+
+     ==========================================================
+         6. Thinks to keep in mind
+         ==========================================================
+
+         Q1. Difference between children and childNodes?
+
+         Ans:
+         children returns only HTML elements.
+         childNodes returns elements, comments and text nodes.
+
+         ----------------------------------------------------------
+
+         Q2. Why doesn't createElement() display anything?
+
+         Ans:
+         Because it only creates the element in memory.
+         appendChild() is needed to insert it into the DOM.
+
+         ----------------------------------------------------------
+
+         Q3. Difference between getAttribute() and setAttribute()?
+
+         Ans:
+         getAttribute() reads an attribute.
+         setAttribute() creates or replaces an attribute.
+
+         ----------------------------------------------------------
+
+         Q4. Why use createTextNode() instead of innerText?
+
+         Ans:
+         It creates a dedicated text node and is generally a cleaner,
+         more DOM-oriented way to insert text.
+
+         ========================================================== -->
+
+</body>
+
+</html>
