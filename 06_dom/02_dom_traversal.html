@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Parent element containing multiple child elements -->
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+
+</body>
+
+<script>
+
+    // Select the parent element
+    const parent = document.querySelector('.parent');
+
+    // Prints the complete parent <div>
+    console.log(parent);
+
+    // Returns an HTMLCollection of all child elements
+    console.log(parent.children);
+
+    // Access the second child (index starts from 0)
+    console.log(parent.children[1].innerHTML);
+
+    // Loop through every child element
+    for (let i = 0; i < parent.children.length; i++) {
+
+        // Print the text inside each child
+        console.log(parent.children[i].innerHTML);
+
+    }
+
+    // Change the text color of the first child
+    parent.children[0].style.color = "orange";
+
+    // Returns the first child element
+    console.log(parent.firstElementChild.innerHTML);
+
+    // Returns the last child element
+    console.log(parent.lastElementChild.innerHTML);
+
+
+    // ---------------------------------------------
+    // Traversing from Child to Parent
+    // ---------------------------------------------
+
+    // Selects the first element with class="day"
+    const dayOne = document.querySelector('.day');
+
+    console.log(dayOne);
+
+    // Returns the parent element of dayOne
+    console.log(dayOne.parentElement);
+
+    // Returns the next sibling element
+    console.log(dayOne.nextElementSibling);
+
+
+    // ---------------------------------------------
+    // childNodes
+    // ---------------------------------------------
+
+    // Returns ALL nodes inside parent
+    // Includes:
+    // 1. Element nodes
+    // 2. Text nodes (spaces/new lines)
+    // 3. Comment nodes (if any)
+
+    console.log("NOTES:", parent.childNodes);
+
+    /*
+    Difference:
+
+    parent.children
+    ----------------
+    -> Returns only HTML elements.
+    -> Type: HTMLCollection
+
+    parent.childNodes
+    -----------------
+    -> Returns elements + text nodes + comments.
+    -> Type: NodeList
+
+    Since the HTML source contains indentation and new lines,
+    you'll notice extra #text nodes in the output.
+    */
+
+</script>
+
+</html>
