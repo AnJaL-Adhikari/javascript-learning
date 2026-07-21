@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Browser tab title -->
+    <title>Background Color Changer</title>
+   <style>
+    /* Reset default spacing */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Full page styling */
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        color: white;
+        transition: background-color 0.5s ease;
+    }
+
+    /* Heading style */
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        max-width: 700px;
+    }
+
+    /* Button container effect */
+    button {
+        width: 130px;
+        padding: 12px 20px;
+        margin: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    /* Start button */
+    #start {
+        background-color: #00c853;
+        color: white;
+    }
+
+    #start:hover {
+        background-color: #009624;
+        transform: scale(1.05);
+    }
+
+    /* Stop button */
+    #stop {
+        background-color: #ff1744;
+        color: white;
+    }
+
+    #stop:hover {
+        background-color: #b2102f;
+        transform: scale(1.05);
+    }
+
+    /* Mobile responsive design */
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 1.4rem;
+            margin: 20px;
+        }
+
+        button {
+            width: 110px;
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <!-- Page heading -->
+    <h1>The background color should change every one second</h1>
+
+    <!-- Button to start changing the background color -->
+    <button id="start">Start</button>
+
+    <!-- Button to stop changing the background color -->
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+    // Generates a random hexadecimal color (e.g., #3FA9D2)
+    const randomColor = function () {
+        const hex = '0123456789ABCDEF';
+        let color = '#';
+
+        // Add six random hexadecimal characters
+        for (let i = 0; i < 6; i++) {
+            color += hex[Math.floor(Math.random() * 16)];
+        }
+
+        return color;
+    };
+
+    // Stores the interval ID so it can be stopped later
+    let intervalId;
+
+    // Starts changing the background color every second
+    const startChangingColor = function () {
+
+        // Prevent multiple intervals from being created
+        if (!intervalId) {
+            intervalId = setInterval(changeBgColor, 1000);
+        }
+
+        // Changes the body's background color
+        function changeBgColor() {
+            document.body.style.backgroundColor = randomColor();
+        }
+    }
+
+    // Stops the interval and allows it to be started again
+    const stopChangingColor = function () {
+        clearInterval(intervalId);
+
+        // Reset intervalId so Start can create a new interval
+        intervalId = null;
+    }
+
+    // Start button event
+    document.querySelector("#start").addEventListener('click', startChangingColor);
+
+    // Stop button event
+    document.querySelector("#stop").addEventListener('click', stopChangingColor);
+
+</script>
+
+</html>
