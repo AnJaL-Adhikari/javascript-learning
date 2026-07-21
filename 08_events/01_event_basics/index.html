@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive on different devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTML Events</title>
+
+    <style>
+        /* Styling the entire page */
+        body {
+            background-color: #414141;
+            color: aliceblue;
+        }
+
+        /* Styling links */
+        a {
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Amazing image</h2>
+
+    <!-- Parent container of all images -->
+    <div>
+
+        <!-- ul has id "images" which will be used for event bubbling/capturing -->
+        <ul id="images">
+
+            <!-- Each image has its own unique id -->
+            <li>
+                <img width="200px" height="250px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSu16OymGI_cwQYLXrXXA3Tphga7Uzd-Hxx4x-gUtf1w&s=10"
+                    alt="" id="spiderman">
+            </li>
+
+            <li>
+                <img width="200px" height="250px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5GMQNcCpoCDVmOe7HshnxXxh1IYsaXvQTzZuZvT6rYlAyW3e4HZl7zlU&s=10"
+                    alt="" id="ironman">
+            </li>
+
+            <li>
+                <img width="200px" height="250px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEC4TZM4H5e7r9tNS_kDjQjZuzX-NI1nwHXr5OVnCjkw&s"
+                    alt="" id="captainamerica">
+            </li>
+
+            <li>
+                <img width="200px" height="250px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtXbWSsAi9DgumJ2A4tM1B7UpFiaFd5PSQJJWzEMFZrA&s=10"
+                    alt="" id="hulk">
+            </li>
+
+            <li>
+                <img width="200px" height="250px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ-svOduwv8v8mi-vLSfNSBMaChfeZN3oWDwtpGpuXZg&s"
+                    alt="" id="thor">
+            </li>
+
+            <li>
+                <img width="200px" height="250px"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUOX60uuwrF56xfjRzbu_eq1lUMD3gQivNW_NZswiSQ&s=10"
+                    alt="" id="blankpanther">
+            </li>
+
+            <!-- Link used to demonstrate preventDefault() -->
+            <li>
+                <a href="https://google.com" id="google">Google</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</body>
+
+
+<script src="./events_basics.js"> </script>
+
+</html>
