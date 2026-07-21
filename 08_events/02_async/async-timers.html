@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title shown in browser tab -->
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Main heading -->
+    <h1>set Timeout & set Interval </h1>
+
+    <!-- Button to stop the timeout -->
+    <button id="stop">Stop</button>
+
+    <!-- Button to start the interval -->
+    <button id="start">Start</button>
+
+    <!-- Button to clear the interval -->
+    <button id="clear">Clear Interval</button>
+
+</body>
+
+</html>
+
+<script>
+    // Runs once after 2 seconds
+    setTimeout(function () {
+        console.log("Thanos");
+    }, 2000);
+
+    // Function expression
+    const sayThanos = function () {
+        console.log("Thanos");
+    }
+
+    // Executes sayThanos after 2 seconds
+    setTimeout(sayThanos, 2000);
+
+    // Function to change the text of the h1 element
+    const changeText = function () {
+        document.querySelector('h1').innerHTML = "Best JS series";
+    }
+
+    // Store timeout ID so it can be cancelled later
+    const changeH1 = setTimeout(changeText, 2000);
+
+    // Stop button cancels the pending timeout
+    document.querySelector('#stop').addEventListener('click', function () {
+        clearTimeout(changeH1);
+        console.log("STOPPED");
+    });
+
+    // Function that prints the current timestamp
+    const sayDate = function (str) {
+        console.log("Thanos", Date.now());
+        console.log(str, Date.now());
+    }
+
+    // Calls sayDate every second (str will be undefined)
+    setInterval(sayDate, 1000);
+
+    // Calls sayDate every second with a parameter
+    setInterval(sayDate, 1000, "Infinity Stones");
+
+
+    let intervalId;
+
+    
+    // Start button creates a new interval
+    document.querySelector('#start').addEventListener('click', function () {
+
+        // Save interval ID so it can be cleared later
+         intervalId = setInterval(sayDate, 1000, "Infinity Stones");
+ 
+    });
+
+    // Clear button stops only this interval
+        document.querySelector('#clear').addEventListener('click', function () {
+            clearInterval(intervalId);
+        });
+
+
+</script>
