@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GitHub API Request</title>
+
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+    XMLHttpRequest readyState values:
+
+    0 - UNSENT
+        Client has been created. open() has not been called yet.
+
+    1 - OPENED
+        open() method has been called.
+
+    2 - HEADERS_RECEIVED
+        send() has been called and response headers/status are available.
+
+    3 - LOADING
+        Response is being downloaded. responseText contains partial data.
+
+    4 - DONE
+        The request has completed successfully.
+    -->
+
+</body>
+
+<script>
+
+    // GitHub API URL from where we will fetch user data
+    const requestUrl = 'https://api.github.com/users/AnJaL-Adhikari';
+
+
+    // Creating a new XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+
+    // Opening a GET request
+    // First parameter: HTTP method
+    // Second parameter: API URL
+    xhr.open('GET', requestUrl);
+
+
+    // onreadystatechange runs whenever the readyState changes
+    xhr.onreadystatechange = function () {
+
+        // Prints current state of the request
+        console.log(xhr.readyState);
+
+
+        // Checking if the request is completed
+        if (xhr.readyState === 4) {
+
+            // Converting JSON response string into JavaScript object
+            const data = JSON.parse(this.responseText);
+
+
+            // Accessing GitHub user's following count
+            console.log(data.following);
+        }
+    };
+
+
+    // Sending the request to the server
+    xhr.send();
+
+</script>
+
+</html>
